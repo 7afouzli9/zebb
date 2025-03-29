@@ -14,20 +14,28 @@
       <button class="bza3" id="c"></button>
     </div>
     <div>
-      <a href="https://www.pornhub.com"><button class="ras">|</button></a>
+      <button class="ras" onclick="playSound()">|</button>
     </div>
     <div>
-      <button class="toul"></button>
+      <button class="toul" onclick="playSound()"></button>
     </div>
     <div>
-      <button class="krarz" id="krarz">|</button>
+      <button class="krarz" id="krarz" onclick="playSound()">|</button>
     </div>
+    <audio id="sound" src="228.mp3"></audio>
 
     <script>
       document.getElementById("krarz").addEventListener("click", function () {
         const baz3a = document.getElementById("baz3a");
         baz3a.classList.toggle("show");
       });
+    </script>
+        <script>
+        function playSound() {
+            var sound = document.getElementById('sound');
+            sound.currentTime = 0; 
+            sound.play(); 
+        }
     </script>
   </body>
 </html>
