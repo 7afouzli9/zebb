@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>زب عجيب</title>
+    <title>Document</title>
     <link rel="stylesheet" href="waw.css" />
   </head>
   <body>
@@ -23,20 +23,32 @@
     <div>
       <button class="krarz" id="krarz" onclick="playSound()">|</button>
     </div>
-    <audio id="sound" src="228.mp3"></audio>
+    <audio id="sound" src="228.mp3" loop="loop"></audio>
 
     <script>
       document.getElementById("krarz").addEventListener("click", function () {
         const baz3a = document.getElementById("baz3a");
         baz3a.classList.toggle("show");
       });
-    </script>
-    <script>
+
       function playSound() {
         var sound = document.getElementById("sound");
         sound.currentTime = 0;
-        sound.play();
+        sound.play().catch((e) => console.log("Audio play failed:", e));
       }
+
+      // Play sound immediately when audio is ready
+      window.addEventListener("DOMContentLoaded", function () {
+        const sound = document.getElementById("sound");
+        sound.load(); // Ensure the audio is loaded
+        sound.addEventListener(
+          "canplaythrough",
+          function () {
+            playSound();
+          },
+          { once: true }
+        );
+      });
     </script>
   </body>
 </html>
